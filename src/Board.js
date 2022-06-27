@@ -78,9 +78,9 @@ static defaultProps = {
    // TODO: flip this cell and the cells around it
     flipCell(y,x);//Flip the intial Cell
     flipCell(y,x -1);//Flip left
-    flipCell(y,x + 1);//Flip right
+    // flipCell(y,x + 1);//Flip right
     flipCell(y - 1,x);//Flip up
-    flipCell(y + 1,x);//Flip down
+    // flipCell(y + 1,x);//Flip down
     
 
     // win when every cell is turned off

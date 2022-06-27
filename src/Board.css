@@ -55,6 +55,7 @@ table tr:last-child td:last-child {
   top: 15vh;
 }
 
+
 .button-49,
 .button-49:after {
   width: 150px;
@@ -62,16 +63,17 @@ table tr:last-child td:last-child {
   line-height: 78px;
   font-size: 20px;
   font-family: 'Bebas Neue', sans-serif;
-  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  background: linear-gradient(45deg, transparent 5%, #ff010199 5%);
   border: 0;
-  color: #fff;
+  color: #fed128ba;
   letter-spacing: 3px;
-  box-shadow: 6px 0px 0px #00E6F6;
+  box-shadow: 6px 0px 0px #dfdfdf75;
   outline: transparent;
   position: relative;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  cursor: pointer;
 }
 
 .button-49:after {
