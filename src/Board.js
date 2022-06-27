@@ -39,7 +39,7 @@ static defaultProps = {
     super(props);
     this.state = {
       hasWon: false,
-      board : this.createBoard()
+      board : this.createBoard(),
     }
 
     // TODO: set initial state
@@ -77,54 +77,65 @@ static defaultProps = {
     }
    // TODO: flip this cell and the cells around it
     flipCell(y,x);//Flip the intial Cell
-    flipCell(y,x -1);//Flip left
-    flipCell(y,x + 1);//Flip right
-    flipCell(y - 1,x);//Flip up
-    flipCell(y + 1,x);//Flip down
+    // flipCell(y,x -1);//Flip left
+    // flipCell(y,x + 1);//Flip right
+    // flipCell(y - 1,x);//Flip up
+    // flipCell(y + 1,x);//Flip down
     
 
     // win when every cell is turned off
     // TODO: determine is the game has been won
-    let hasWon = board.every(row => row.every(cell => !cell));
+    let hasWon1 = board.every(row => row.every(cell => !cell));
 
     
     
-    this.setState({board: board, hasWon : hasWon});
+    this.setState({board: board, hasWon : hasWon1});
   }
-
+ 
 
   /** Render game board or winning message. */
-
-  render() {
-    if(this.state.hasWon){
-      return <h1>YOU WON!!</h1>
-    }
-     let tblcell = [];
-     for(let y = 0; y < this.props.nrows; y++){
-       let row = [];
-       for(let x = 0; x < this.props.ncols; x++){
-        let coord = `${y}-${x}`;
-        row.push(<Cell key={coord} isLit= {this.state.board[y][x]} flipCellsAroundMe={() => this.flipCellsAround(coord)} />)
+   
+  render() { 
+      if(this.state.hasWon){
+        return (
+          <div className="flex-win">
+          <div className="Board-title">
+            <div className="winner">
+          <div className="neon-orange" style={{fontSize: "118px"}}>YOU</div>
+          <div className="neon-blue">WIN!!</div>
+          </div>
+          </div>
+          <button className="button-49" onClick={() => window.location.reload(false)}>PLAY AGAIN</button>
+          </div>
+        )
+      }
+       let tblcell = [];
+       for(let y = 0; y < this.props.nrows; y++){
+         let row = [];
+         for(let x = 0; x < this.props.ncols; x++){
+          let coord = `${y}-${x}`;
+          row.push(<Cell key={coord} isLit= {this.state.board[y][x]} flipCellsAroundMe={() => this.flipCellsAround(coord)} />)
+         }
+         tblcell.push(<tr key={y}>{row}</tr>)
        }
-       tblcell.push(<tr key={y}>{row}</tr>)
-     }
-
+   
       return (
         <div>
         <div className="Board-title">
           <div className="neon-orange">Lights</div>
           <div className="neon-blue">Out</div>
           </div>
-        <table className="Board">
-          <tbody>
-            {tblcell}
-          </tbody>
-        </table>
+          <table className="Board">
+            <tbody>
+              {tblcell}
+            </tbody>
+          </table>
+     
         </div>
       )
-    
   }
+
 }
 
 
-export default Board;
+export default Board
